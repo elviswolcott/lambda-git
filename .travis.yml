@@ -33,3 +33,10 @@ jobs:
       provider: script
       skip_cleanup: true
       script: bash ./scripts/deploy.sh -v $TRAVIS_TAG -n git
+      on:
+        tags: true
+        repo: elviswolcott/lambda-git
+        branch: master
+stages:
+  -test
+  -release
