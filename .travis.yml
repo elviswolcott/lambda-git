@@ -1,6 +1,7 @@
 language: minimal
 os: linux
 dist: trusty
+sudo: required
 services:
   - docker
 addons:
@@ -16,8 +17,7 @@ jobs:
     script: bash ./scripts/test.sh -v ${TRAVIS_TAG:-"2.25.0"} -b
   - stage: release
     before_install:
-      - pip install -U pip
-      - pip3 install awscli
+      - sudo pip3 install awscli
       - find ./scripts -type f | xargs -I % bash -c "chmod +x %"
     env:
       - secure: "CItnbKMTLeFRHG4Zi2wlmc7soSWkUdSVxzp/fKpBTDdqgVhlxVFq9kT5dteudkjHflJdAm5M7m9xj0D0kWLCdQQfWuvtV0OpnCpVs9HcsFsjCus5P8Y7v9ewU167NgYreu/F+P3+SPzI9CyT/G+lCrcIXGnnHbRg5Fn2EZTS+O1bd945dLRJTMq15MhYcjC9ehAkdGzmQVJZsXtGHXlIXHm0KamDMRW4fy+1VsR/4a5CnvQ0iUkHFedvOJQ2eRKb/AgDQEFXTVXag/E1COwyr3brlGjM9Xvjl7bIB/BiQyM7Emq9ZlzAi6+ILR5G+Y3T/W7L3+RP8oaSmkRsR77ukbXZaGEWjJK0GARiSZj6WaNYDMD7sCy1/TlxbQEysDsOnEs4yQ/zBlEecldw92C9y0jezzpSwZPnN9V39snUK87QBJ2TBnumzvmguHQ0I6tGa7uTEiCzOGWqZqkJP/dzEi3YjEqf3HSIfKKWWXKt1zEeHRZHB/WurXLpcc/w7gH/x+tHC9TyWaI4nNnK3k8jMKF8WslZcbsbyvXsVmixIa3E3s/9CKYVgcboMa+jzK8L/G3ykgCRYm2lGqVFoPtrvLIXvWF0kQyKeb2gS3Splbwv0RnrVe1dClmTgZEC6aBFDOy1cnbjsVNy6mVW43GPhvgjruAcExjpla8BmstX8rA="
