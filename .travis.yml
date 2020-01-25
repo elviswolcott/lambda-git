@@ -16,7 +16,6 @@ jobs:
     script: bash ./scripts/test.sh -v ${TRAVIS_TAG:-"2.25.0"} -b
   - stage: release
     before_install:
-      - pyenv global 3.7.1
       - pip install -U pip
       - pip3 install awscli
       - find ./scripts -type f | xargs -I % bash -c "chmod +x %"
