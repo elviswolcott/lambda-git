@@ -1,12 +1,13 @@
 #!/bin/bash
 # tests that git.zip works
+set -e
+set -o pipefail
 
 while getopts "bv:" opt; do
   case $opt in
     b)
       echo "building new image" >&2
       # build an image that builds git from source
-      docker image rm amazonlinux_git
       rm -rf ./git.zip
       ./scripts/build.sh -v ${version:-"2.25.0"}
       ;;

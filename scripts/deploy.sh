@@ -4,6 +4,8 @@
 # arguments:
 #   - v: version of git to build (default: 2.25.0)
 #   - n: name of layer to deploy to (default: lambda-git)
+set -e
+set -o pipefail
 
 while getopts "v:n:" opt; do
   case $opt in
@@ -28,7 +30,6 @@ version=${v:-"2.25.0"}
 name=${n:-"lambda-git"}
 
 # clean up any old resources
-docker image rm amazonlinux_git
 rm -rf ./git.zip
 
 # build the layer

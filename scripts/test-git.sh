@@ -1,5 +1,7 @@
 #!/bin/bash
-# runs in an clean amazonlinux box to pull in the git zip and test it
+# runs in an clean amazonlinux box to pull in the git zip and test it\
+set -e
+set -o pipefail
 
 # need to unzip the git files
 echo "installing unzip"

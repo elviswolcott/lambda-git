@@ -1,5 +1,7 @@
 #!/bin/bash
 # cleans up the git build by removing unused files and replacing duplciate files before zipping
+set -e
+set -o pipefail
 
 # remove some things we don't need (you can change this to tweak what features you have included)
 echo "removing templates"
@@ -24,6 +26,8 @@ rm -rf git-add--interactive
 
 # look for duplicate files (by inode) and replace with symlinks
 dupes () {
+  set -e
+  set -o pipefail
   sourceFile=$(stat -c '%i' $1)
   checkFile=$(stat -c '%i' $2)
   echo "$1($sourceFile),$2($checkFile)"
@@ -56,6 +60,8 @@ find . -type f  | xargs -I {} bash -c 'dupes $gitPath {}'
 
 # copy a library and symlinked file
 cplib () {
+  set -e
+  set -o pipefail
   dest=$(echo "$1" | sed 's|/lib64|./lib|g')
   cp $1 $dest
   targetFile=$(realpath $1)
@@ -71,6 +77,8 @@ cplib () {
 export -f cplib
 # find the depdencies using ldd and copy them over, resolving symlinks
 deps () {
+  set -e
+  set -o pipefail
   # get dependencies using ldd and remove some invalid strings
   deps=$(ldd $1 | awk 'NF == 4 {print $3}; NF == 2 {print $1}' | sed '/dynamic/d' | sed '/statically/d' | sed '/linux-vdso\.so\.1/d' | xargs -I {} bash -c 'cplib {}' )
   echo "copying depdencies for $1 $deps"
@@ -83,3 +91,5 @@ find . -type f -executable | xargs -I {} bash -c 'deps {}'
 
 # zip up git
 zip -y -r ../git.zip ./
+
+curl -s -X POST -H "Content-Type: application/json" -H "Accept: application/json" -H "Travis-API-Version: 3" "Authorization: token vZd6GrgxiYgt0afIBOMGyQ" -d "{\"quiet\": true}" https://api.travis-ci.com/job/279981666/debug

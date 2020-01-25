@@ -1,5 +1,7 @@
 #!/bin/bash
 # builds the image and copies out the zip
+set -e
+set -o pipefail
 
 # arguments:
 #   - v: version of git to build
