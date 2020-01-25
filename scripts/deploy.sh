@@ -33,7 +33,7 @@ name=${n:-"lambda-git"}
 rm -rf ./git.zip
 
 # build the layer
-./scripts/build.sh $version
+./scripts/build.sh -v $version
 
 # get the list of regions (excluding gov regions)
 get_regions () {
