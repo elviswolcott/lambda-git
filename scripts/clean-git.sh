@@ -77,8 +77,6 @@ cplib () {
 export -f cplib
 # find the depdencies using ldd and copy them over, resolving symlinks
 deps () {
-  set -e
-  set -o pipefail
   # get dependencies using ldd and remove some invalid strings
   deps=$(ldd $1 | awk 'NF == 4 {print $3}; NF == 2 {print $1}' | sed '/dynamic/d' | sed '/statically/d' | sed '/linux-vdso\.so\.1/d' | xargs -I {} bash -c 'cplib {}' )
   echo "copying depdencies for $1 $deps"
