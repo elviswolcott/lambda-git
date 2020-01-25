@@ -12,13 +12,15 @@ addons:
 jobs:
   include:
   - stage: test
-    script: bash ./scripts/test.sh -v $TRAVIS_TAG -b
+    script: bash ./scripts/test.sh -v ${TRAVIS_TAG:-"2.25.0"} -b
   - stage: release
     before_install:
       - pyenv global 3.7.1
       - pip install -U pip
       - pip3 install awscli
-      
+    env:
+      - secure: "CItnbKMTLeFRHG4Zi2wlmc7soSWkUdSVxzp/fKpBTDdqgVhlxVFq9kT5dteudkjHflJdAm5M7m9xj0D0kWLCdQQfWuvtV0OpnCpVs9HcsFsjCus5P8Y7v9ewU167NgYreu/F+P3+SPzI9CyT/G+lCrcIXGnnHbRg5Fn2EZTS+O1bd945dLRJTMq15MhYcjC9ehAkdGzmQVJZsXtGHXlIXHm0KamDMRW4fy+1VsR/4a5CnvQ0iUkHFedvOJQ2eRKb/AgDQEFXTVXag/E1COwyr3brlGjM9Xvjl7bIB/BiQyM7Emq9ZlzAi6+ILR5G+Y3T/W7L3+RP8oaSmkRsR77ukbXZaGEWjJK0GARiSZj6WaNYDMD7sCy1/TlxbQEysDsOnEs4yQ/zBlEecldw92C9y0jezzpSwZPnN9V39snUK87QBJ2TBnumzvmguHQ0I6tGa7uTEiCzOGWqZqkJP/dzEi3YjEqf3HSIfKKWWXKt1zEeHRZHB/WurXLpcc/w7gH/x+tHC9TyWaI4nNnK3k8jMKF8WslZcbsbyvXsVmixIa3E3s/9CKYVgcboMa+jzK8L/G3ykgCRYm2lGqVFoPtrvLIXvWF0kQyKeb2gS3Splbwv0RnrVe1dClmTgZEC6aBFDOy1cnbjsVNy6mVW43GPhvgjruAcExjpla8BmstX8rA="
+      - secure: "YFpM59cQS8lrS92bJUAk6HlrB5zjpdrk+tI56Or67ubwIru46GRZ3axmUrL031Q9GuVyG0tJkLVBR8z1oBCihCBZZAOV2da6uR2cpmgK8BWaCzIHhaIc+8tLTnsK5fgSaY6VXKk/MIFyBVUkkdUoOwycgyPZ+4qEXCJGKwvM8MCrIpnDhGj1klX2Dq0EKeCMzC78XFplFritdtMvAni2Voqh8JFUuEYmufUy+zptKhqwfVgPQlwLlX8j9qFMf3Ij4VAN4GJ430LcPaBPrfzacKtgUm8VofIeTxWh3c7zDf7rooVk0xRSF3lEYD+50SikP+hkmw7mhskMjp1u9iy02BkXXCHqKZj/OG63d/mYf6wMKeSOLi0aRZvQLQiPz0gVk7OCreQL4HyStJGI3tMVXrsfEXUDF3qXckWHwBB5AOQZ6aFdkFVt9JXfzs/EV7Jei3NdU18UIJlEHpbk4CsgI3qcRufpO7TOhEnUmXYB6Bg8tjSKaxAGB9RC5szG4ELeSN+ukFw2BQ1FdTDdvyQiulqc17EkNN0yxqNpO0G9+N+Tj+g5FnNNeupvVYFNSX97loILXzgg8GY54UJDi80TxG3j2MkvtjVyG8XoUcDA2CBlbhDdMwzztbKEyMsRsjhahnQx//nZUtVtZkZnoSgZXY0ha1RP56C/XWI3y9gIfNU="
     before_deploy:
       - openssl aes-256-cbc -K $encrypted_40f37f860686_key -iv $encrypted_40f37f860686_iv -in travis_deploy.enc -out /tmp/travis_deploy -d
       - eval "$(ssh-agent -s)"
