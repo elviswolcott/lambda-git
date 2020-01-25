@@ -1,6 +1,7 @@
+[![Travis (.com) build status](https://img.shields.io/travis/com/elviswolcott/lambda-git?logo=travis)](https://travis-ci.com/elviswolcott/lambda-git)
 # `git` layer for AWS Lambda
 
-> A Lambda layer with a `git` binary
+> Build Lambda layers to add git to your functions
 
 # Usage
 
