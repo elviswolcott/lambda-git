@@ -41,7 +41,9 @@ get_regions () {
 }
 regions=$(get_regions)
 
-git clone https://github.com/elviswolcott/lambda-git
+git config --global user.email "travis@travis-ci.com"
+git config --global user.name "Travis CI"
+git clone git clone git@github.com:elviswolcott/lambda-git.git
 versions=./lambda-git/VERSIONS.md
 
 # add header to VERSIONS.md
@@ -64,8 +66,6 @@ done
 
 # commit VERSIONS.md
 cd lambda-git
-git config --global user.email "travis@travis-ci.com"
-git config --global user.name "Travis CI"
 git checkout master
 git add VERSIONS.md
 git commit -m "chore: release layer for $version [skip ci]"
