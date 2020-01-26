@@ -47,7 +47,8 @@ git clone git@github.com:elviswolcott/lambda-git.git
 versions=./lambda-git/VERSIONS.md
 
 # add header to VERSIONS.md
-echo "##Git \`v$version\`" >> $versions
+echo "## Git \`v$version\`" >> $versions
+echo "" >> $versions
 echo "| Region | ARN |" >> $versions
 echo "| ------ | --- |" >> $versions
 
