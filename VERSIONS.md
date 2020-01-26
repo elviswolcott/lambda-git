@@ -3,3 +3,25 @@
 > Note: This document is automatically updated by the deploy script.
 
 
+## Git `v2.13.7`
+
+| Region | ARN |
+| ------ | --- |
+| `us-west-2` | `arn:aws:lambda:us-west-2:998868154130:layer:git:7` |
+| `us-west-1` | `arn:aws:lambda:us-west-1:998868154130:layer:git:6` |
+| `us-east-2` | `arn:aws:lambda:us-east-2:998868154130:layer:git:6` |
+| `us-east-1` | `arn:aws:lambda:us-east-1:998868154130:layer:git:6` |
+| `sa-east-1` | `arn:aws:lambda:sa-east-1:998868154130:layer:git:6` |
+| `me-south-1` | `arn:aws:lambda:me-south-1:998868154130:layer:git:6` |
+| `eu-west-3` | `arn:aws:lambda:eu-west-3:998868154130:layer:git:6` |
+| `eu-west-2` | `arn:aws:lambda:eu-west-2:998868154130:layer:git:6` |
+| `eu-west-1` | `arn:aws:lambda:eu-west-1:998868154130:layer:git:6` |
+| `eu-north-1` | `arn:aws:lambda:eu-north-1:998868154130:layer:git:6` |
+| `eu-central-1` | `arn:aws:lambda:eu-central-1:998868154130:layer:git:6` |
+| `ca-central-1` | `arn:aws:lambda:ca-central-1:998868154130:layer:git:6` |
+| `ap-southeast-2` | `arn:aws:lambda:ap-southeast-2:998868154130:layer:git:6` |
+| `ap-southeast-1` | `arn:aws:lambda:ap-southeast-1:998868154130:layer:git:6` |
+| `ap-south-1` | `arn:aws:lambda:ap-south-1:998868154130:layer:git:6` |
+| `ap-northeast-2` | `arn:aws:lambda:ap-northeast-2:998868154130:layer:git:6` |
+| `ap-northeast-1` | `arn:aws:lambda:ap-northeast-1:998868154130:layer:git:6` |
+| `ap-east-1` | `arn:aws:lambda:ap-east-1:998868154130:layer:git:6` |
