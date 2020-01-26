@@ -22,6 +22,10 @@ while getopts "v:" opt; do
 done
 
 # build git in amazonlinux:2
+if [ "$TRAVIS" = true ] ;
+then
+  echo -e "travis_fold:start:build_git\033[33;1mbuilding git from source\033[0m"
+fi
 echo "building image with git v${version}"
 docker build -t amazonlinux_git --build-arg version=$version .
 
@@ -43,3 +47,7 @@ docker cp builder:/git.zip ./git.zip
 # clean up
 docker stop builder
 docker rm builder
+if [ "$TRAVIS" = true ] ;
+then
+  echo -e "\ntravis_fold:end:build_git\r"
+fi

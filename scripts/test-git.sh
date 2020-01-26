@@ -4,11 +4,27 @@ set -e
 set -o pipefail
 
 # need to unzip the git files
-echo "installing unzip"
+if [ "$TRAVIS" = true ] ;
+then
+  echo -e "travis_fold:start:install_unzip\033[33;1minstalling unzip on test container\033[0m"
+fi
 yum install unzip -y
-echo "unzipping git into /git"
+if [ "$TRAVIS" = true ] ;
+then
+  echo -e "\ntravis_fold:end:install_unzip\r"
+fi
+
+
+if [ "$TRAVIS" = true ] ;
+then
+  echo -e "travis_fold:start:unzip_git\033[33;1munzipping git on test container\033[0m"
+fi
 mkdir /git
 unzip git.zip -d /git
+if [ "$TRAVIS" = true ] ;
+then
+  echo -e "\ntravis_fold:end:unzip_git\r"
+fi
 
 # get the version
 echo "checking version"
