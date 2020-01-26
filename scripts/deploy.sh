@@ -41,7 +41,7 @@ get_regions () {
 }
 regions=$(get_regions)
 
-git clone https://github.com/elviswolcott/lambda-git.git
+git clone https://github.com/elviswolcott/lambda-git
 versions=./lambda-git/VERSIONS.md
 
 # add header to VERSIONS.md
