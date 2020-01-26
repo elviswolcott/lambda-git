@@ -39,6 +39,38 @@ The `git` binary is zipped and then released as a layer using the AWS CLI.
 
 In the future, a Lambda will run using the layer to monitor for tags on the source repository. This will the layer to be updated as soon as a new version of git is released.
 
+## Setting up your own deployments
+
+The deploy scripts require you to be signed into the AWS CLI. 
+If your account does not have the Honk Kong and Bahrain regions enabled, the deploy script will fail unless you modify the `get_regions` function to remove them.
+
+This policy provides the necessary permissions. 
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:PublishLayerVersion",
+                "lambda:AddLayerVersionPermission"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "ssm:GetParametersByPath",
+            "Resource": "arn:aws:ssm:*:*:parameter/aws/service/global-infrastructure/services/lambda/regions"
+        }
+    ]
+}
+```
+
+You'll want to modify the deploy script so that it doesn't attempt to commit changes to `VERSIONS.md`.
+
 # Methodology
 It turns out getting a git binary onto Lambda isn't easy.
 

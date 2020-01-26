@@ -57,7 +57,7 @@ do
   layerVersion=$(echo $layerInfo | jq -r '.Version')
   arn=$(echo $layerInfo | jq -r '.LayerVersionArn')
   # add permissions so that any user can add the layer
-  aws lambda add-layer-version-permission --region "$region" --layer-name "$name" --version-number "$layerVersion" --statement-id "public-access" --action --action "lambda:GetLayerVersion" --principal "*"
+  aws lambda add-layer-version-permission --region "$region" --layer-name "$name" --version-number "$layerVersion" --statement-id "public-access" --action "lambda:GetLayerVersion" --principal "*"
   # add the layer information to VERSIONS.md
   echo "| \`$region\` | \`$arn\` |" >> $versions
 done
