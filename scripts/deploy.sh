@@ -37,14 +37,17 @@ rm -rf ./git.zip
 
 # get the list of regions (excluding gov regions)
 get_regions () {
-  echo $(aws ssm get-parameters-by-path --reigion "us-east-1" --path /aws/service/global-infrastructure/services/lambda/regions --query 'Parameters[].Value' --output text | tr '[:blank:]' '\n' | grep -v -e ^cn- -e ^us-gov- | sort -r)
+  echo $(aws ssm get-parameters-by-path --region "us-east-1" --path /aws/service/global-infrastructure/services/lambda/regions --query 'Parameters[].Value' --output text | tr '[:blank:]' '\n' | grep -v -e ^cn- -e ^us-gov- | sort -r)
 }
 regions=$(get_regions)
 
+git clone https://github.com/elviswolcott/lambda-git.git
+versions=./lambda-git/VERSIONS.md
+
 # add header to VERSIONS.md
-echo "##Git \`v$version\`" >> ./VERSIONS.md
-echo "| Region | ARN |" >> ./VERSIONS.md
-echo "| ------ | --- |" >> ./VERSIONS.md
+echo "##Git \`v$version\`" >> $versions
+echo "| Region | ARN |" >> $versions
+echo "| ------ | --- |" >> $versions
 
 # deploy the layer to each region (technichally it would be faster to upload to s3 and use the bucket, but I'd rather not bother setting that up)
 for region in $regions;
@@ -56,10 +59,11 @@ do
   # add permissions so that any user can add the layer
   aws lambda add-layer-version-permission --region "$region" --layer-name "$name" --version-number "$layerVersion" --statement-id "public-access" --action --action "lambda:GetLayerVersion" --principal "*"
   # add the layer information to VERSIONS.md
-  echo "| \`$region\` | \`$arn\` |" >> ./VERSIONS.md
+  echo "| \`$region\` | \`$arn\` |" >> $versions
 done
 
 # commit VERSIONS.md
+cd lambda-git
 git config --global user.email "travis@travis-ci.com"
 git config --global user.name "Travis CI"
 git checkout master
