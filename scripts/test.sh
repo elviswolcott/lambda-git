@@ -27,7 +27,7 @@ done
 
 # start a fresh amazonlinux image
 echo "starting fresh container"
-docker create -it --name tester amazonlinux:2 bash
+docker create -it -e TRAVIS --name tester amazonlinux:2 bash
 
 # copy over the image and test script
 echo "copying test script and zip"
