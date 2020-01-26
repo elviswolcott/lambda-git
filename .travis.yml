@@ -13,7 +13,9 @@ addons:
 jobs:
   include:
   - stage: test
-    before_install: find ./scripts -type f | xargs -I % bash -c "chmod +x %"
+    before_install: 
+      - if [[ "$TRAVIS_COMMIT_MESSAGE" == "docs"* && -z "$TRAVIS_TAG" ]]; then travis_terminate 0 ; fi ;
+      - find ./scripts -type f | xargs -I % bash -c "chmod +x %"
     script: bash ./scripts/test.sh -v ${TRAVIS_TAG:-"2.25.0"} -b
   - stage: release
     before_install:

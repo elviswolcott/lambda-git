@@ -69,5 +69,6 @@ done
 cd lambda-git
 git checkout master
 git add VERSIONS.md
-git commit -m "chore: release layer for $version [skip ci]"
+git commit -m "docs: release layer for $version"
 git push
+
