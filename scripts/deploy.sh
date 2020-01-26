@@ -43,7 +43,7 @@ regions=$(get_regions)
 
 git config --global user.email "travis@travis-ci.com"
 git config --global user.name "Travis CI"
-git clone git clone git@github.com:elviswolcott/lambda-git.git
+git clone git@github.com:elviswolcott/lambda-git.git
 versions=./lambda-git/VERSIONS.md
 
 # add header to VERSIONS.md
