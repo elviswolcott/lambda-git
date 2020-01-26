@@ -37,7 +37,7 @@ rm -rf ./git.zip
 
 # get the list of regions (excluding gov regions)
 get_regions () {
-  echo $(aws ssm get-parameters-by-path --path /aws/service/global-infrastructure/services/lambda/regions --query 'Parameters[].Value' --output text | tr '[:blank:]' '\n' | grep -v -e ^cn- -e ^us-gov- | sort -r)
+  echo $(aws ssm get-parameters-by-path --reigion "us-east-1" --path /aws/service/global-infrastructure/services/lambda/regions --query 'Parameters[].Value' --output text | tr '[:blank:]' '\n' | grep -v -e ^cn- -e ^us-gov- | sort -r)
 }
 regions=$(get_regions)
 
