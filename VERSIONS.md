@@ -619,3 +619,25 @@
 | `ap-northeast-2` | `arn:aws:lambda:ap-northeast-2:998868154130:layer:git:33` |
 | `ap-northeast-1` | `arn:aws:lambda:ap-northeast-1:998868154130:layer:git:33` |
 | `ap-east-1` | `arn:aws:lambda:ap-east-1:998868154130:layer:git:33` |
+## Git `v2.21.0`
+
+| Region | ARN |
+| ------ | --- |
+| `us-west-2` | `arn:aws:lambda:us-west-2:998868154130:layer:git:35` |
+| `us-west-1` | `arn:aws:lambda:us-west-1:998868154130:layer:git:34` |
+| `us-east-2` | `arn:aws:lambda:us-east-2:998868154130:layer:git:34` |
+| `us-east-1` | `arn:aws:lambda:us-east-1:998868154130:layer:git:34` |
+| `sa-east-1` | `arn:aws:lambda:sa-east-1:998868154130:layer:git:34` |
+| `me-south-1` | `arn:aws:lambda:me-south-1:998868154130:layer:git:34` |
+| `eu-west-3` | `arn:aws:lambda:eu-west-3:998868154130:layer:git:34` |
+| `eu-west-2` | `arn:aws:lambda:eu-west-2:998868154130:layer:git:34` |
+| `eu-west-1` | `arn:aws:lambda:eu-west-1:998868154130:layer:git:34` |
+| `eu-north-1` | `arn:aws:lambda:eu-north-1:998868154130:layer:git:34` |
+| `eu-central-1` | `arn:aws:lambda:eu-central-1:998868154130:layer:git:34` |
+| `ca-central-1` | `arn:aws:lambda:ca-central-1:998868154130:layer:git:34` |
+| `ap-southeast-2` | `arn:aws:lambda:ap-southeast-2:998868154130:layer:git:34` |
+| `ap-southeast-1` | `arn:aws:lambda:ap-southeast-1:998868154130:layer:git:34` |
+| `ap-south-1` | `arn:aws:lambda:ap-south-1:998868154130:layer:git:34` |
+| `ap-northeast-2` | `arn:aws:lambda:ap-northeast-2:998868154130:layer:git:34` |
+| `ap-northeast-1` | `arn:aws:lambda:ap-northeast-1:998868154130:layer:git:34` |
+| `ap-east-1` | `arn:aws:lambda:ap-east-1:998868154130:layer:git:34` |
